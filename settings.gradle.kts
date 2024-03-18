@@ -14,7 +14,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Libro"
-include(":app")
+include(":app-production")
+include(":app-development")
 include(":feature:Home")
 include(":feature:Search")
 include(":feature:Library")

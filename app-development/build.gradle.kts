@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "net.yourein.libro"
+        applicationId = "net.yourein.libro.development"
         minSdk = 28
         //noinspection OldTargetApi
         targetSdk = 33
