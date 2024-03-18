@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
     implementation(project(":feature:Library"))
+    implementation(project(":feature:Root"))
 
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)

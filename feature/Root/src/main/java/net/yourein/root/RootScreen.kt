@@ -1,4 +1,4 @@
-package net.yourein.libro.ui
+package net.yourein.root
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
@@ -7,7 +7,6 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,7 +18,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import net.yourein.home.ui.HomeRoot
 import net.yourein.library.ui.LibraryRoot
 import net.yourein.search.ui.SearchRoot
@@ -33,7 +31,7 @@ sealed class Screen(val route: String, val FilledIcon: ImageVector) {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainRoot(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController
 ) {
     Scaffold(
         bottomBar = {

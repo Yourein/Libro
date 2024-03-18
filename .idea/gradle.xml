@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/feature/DataSource" />
             <option value="$PROJECT_DIR$/feature/Home" />
             <option value="$PROJECT_DIR$/feature/Library" />
+            <option value="$PROJECT_DIR$/feature/Root" />
             <option value="$PROJECT_DIR$/feature/Search" />
           </set>
         </option>

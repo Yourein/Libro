@@ -1,25 +1,18 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "net.yourein.libro"
+    namespace = "net.yourein.root"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "net.yourein.libro.development"
         minSdk = 28
-        //noinspection OldTargetApi
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -44,18 +37,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
     implementation(project(":feature:Library"))
-    implementation(project(":feature:Root"))
 
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)
