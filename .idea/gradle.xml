@@ -13,9 +13,9 @@
             <option value="$PROJECT_DIR$/app-development" />
             <option value="$PROJECT_DIR$/app-production" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/Add" />
             <option value="$PROJECT_DIR$/feature/DataSource" />
             <option value="$PROJECT_DIR$/feature/Home" />
-            <option value="$PROJECT_DIR$/feature/Library" />
             <option value="$PROJECT_DIR$/feature/Root" />
             <option value="$PROJECT_DIR$/feature/Search" />
           </set>

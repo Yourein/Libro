@@ -30,7 +30,7 @@ import net.yourein.search.ui.SearchRoot
 sealed class Screen(val route: String, val FilledIcon: ImageVector) {
     object Home: Screen("Home", Icons.Filled.Home)
     object Search: Screen("Search", Icons.Filled.Search)
-    object Library: Screen("Library", Icons.Filled.Menu)
+    object Library: Screen("Add", Icons.Filled.Add)
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

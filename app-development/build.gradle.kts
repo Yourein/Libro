@@ -54,7 +54,7 @@ android {
 dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
-    implementation(project(":feature:Library"))
+    implementation(project(":feature:Add"))
     implementation(project(":feature:Root"))
     implementation(project(":LibroUI"))
 
