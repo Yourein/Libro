@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
     annotationProcessor(libs.room.anotation)
     implementation(libs.room.database)
     implementation(libs.room.ktx)
