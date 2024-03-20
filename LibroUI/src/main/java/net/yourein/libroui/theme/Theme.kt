@@ -1,4 +1,4 @@
-package net.yourein.libro.ui.theme
+package net.yourein.libroui.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
