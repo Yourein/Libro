@@ -61,7 +61,7 @@ fun HomeNavigationItem(
 
 @Preview(showBackground = true)
 @Composable
-fun HomeNavigationItemPreview1() {
+private fun HomeNavigationItemPreview1() {
     HomeNavigationItem(
         title = "AccountBox",
         icon = Icons.Filled.AccountBox,
@@ -71,7 +71,7 @@ fun HomeNavigationItemPreview1() {
 
 @Preview(showBackground = true)
 @Composable
-fun HomeNavigationItemPreview2() {
+private fun HomeNavigationItemPreview2() {
     HomeNavigationItem(
         title = "Extremely Looooong Looooong Title For The Preview",
         icon = Icons.Filled.AccountBox,
