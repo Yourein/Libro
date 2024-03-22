@@ -1,4 +1,4 @@
-package net.yourein.root
+package net.yourein.home.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.BoxWithConstraints
