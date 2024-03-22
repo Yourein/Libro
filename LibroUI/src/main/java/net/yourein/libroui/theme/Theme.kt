@@ -20,7 +20,7 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Pink80,
     background = LibroBackground,
     onSurface = LibroPrimary,
-    surface = LibroPrimary,
+    surface = LibroBackground,
     error = LibroError,
     onError = LibroError,
 )
@@ -31,7 +31,7 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = LibroBackground,
     onSurface = LibroPrimary,
-    surface = LibroPrimary,
+    surface = LibroBackground,
     error = LibroError,
     onError = LibroError,
 )
