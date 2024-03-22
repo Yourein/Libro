@@ -3,11 +3,11 @@ package net.yourein.root
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
+import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,16 +40,15 @@ fun MainRoot(
 ) {
     Scaffold(
         bottomBar = {
-            BottomNavigation (
+            NavigationBar (
                 contentColor = Color(0xFFE0E0E0),
-                backgroundColor = Color(0xFF101010),
             ) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
 
                 val items = listOf(Screen.Home, Screen.Search, Screen.Library)
                 items.forEach {screen ->
-                    BottomNavigationItem(
+                    NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                         onClick = {
                               navController.navigate(screen.route){
