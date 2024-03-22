@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.yourein.libroui.theme.LibroPrimary
 
 @Composable
 fun HomeNavigationItem(
@@ -42,6 +43,7 @@ fun HomeNavigationItem(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
+                tint = LibroPrimary,
             )
             Spacer(modifier = Modifier.width(6.dp))
             Text(
@@ -51,7 +53,8 @@ fun HomeNavigationItem(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
-            modifier = Modifier.align(Alignment.CenterEnd)
+            modifier = Modifier.align(Alignment.CenterEnd),
+            tint = LibroPrimary,
         )
     }
 }
