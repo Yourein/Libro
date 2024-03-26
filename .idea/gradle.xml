@@ -9,7 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/LibroUI" />
+            <option value="$PROJECT_DIR$/LibroCore" />
             <option value="$PROJECT_DIR$/app-development" />
             <option value="$PROJECT_DIR$/app-production" />
             <option value="$PROJECT_DIR$/feature" />

@@ -56,7 +56,7 @@ dependencies {
     implementation(project(":feature:Search"))
     implementation(project(":feature:Add"))
     implementation(project(":feature:Root"))
-    implementation(project(":LibroUI"))
+    implementation(project(":LibroCore"))
 
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)

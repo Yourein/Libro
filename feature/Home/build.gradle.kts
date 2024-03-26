@@ -41,8 +41,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":LibroUI"))
 
+    implementation(project(":LibroCore"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
