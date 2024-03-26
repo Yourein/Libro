@@ -9,5 +9,7 @@ import androidx.room.PrimaryKey
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "author") val author: String?,
     @ColumnInfo(name = "published_at") val publishDate: String?,
+    @ColumnInfo(name = "thumbnail_url") val thumbnailUrl: String?,
     @ColumnInfo(name = "thumbnail_name") val thumbnailName: String?,
+    @ColumnInfo(name = "isbn") val isbn: String?,
 )
