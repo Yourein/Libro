@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.yourein.libroui.theme.LibroPrimary
+import net.yourein.librocore.theme.LibroPrimary
 
 @Composable
 fun HomeNavigationItem(

@@ -1,4 +1,4 @@
-package net.yourein.libroui
+package net.yourein.librocore
 
 import org.junit.Test
 

@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.yourein.feature.home.R
-import net.yourein.libroui.theme.LibroTheme
+import net.yourein.librocore.theme.LibroTheme
 
 @Composable
 fun HomeRoot() {

@@ -1,4 +1,4 @@
-package net.yourein.libroui.theme
+package net.yourein.librocore.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -7,7 +7,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import net.yourein.libroui.theme.LibroDivider
+import net.yourein.librocore.theme.LibroDivider
 
 @Composable
 fun HomeNavigationStack(
