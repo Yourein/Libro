@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import net.yourein.datasource.daos.BookDao
 import net.yourein.datasource.entities.Book
 import net.yourein.datasource.entities.BookTag
 import net.yourein.datasource.entities.Series
@@ -18,6 +19,8 @@ import net.yourein.datasource.entities.Tag
         ],
     version = 1)
 abstract class LibroDB: RoomDatabase() {
+    abstract fun bookDao(): BookDao
+
     companion object {
         private const val DB_NAME = "libro.db"
         @Volatile private var DB_INSTANCE: LibroDB? = null
