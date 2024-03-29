@@ -1,0 +1,337 @@
+package net.yourein.home.ui
+
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import net.yourein.datasource.entities.Book
+import net.yourein.feature.home.R
+import net.yourein.librocore.theme.LibroPrimary
+import net.yourein.librocore.theme.LibroSecondary
+import net.yourein.librocore.theme.LibroTheme
+
+@Composable
+fun CurrentlyReadingList(
+    bookList: ImmutableList<Book>,
+    @OptIn(ExperimentalFoundationApi::class)
+    pagerState: PagerState,
+    getBookThumbnail: (Int) -> Painter?,
+    onBookClicked: (Int) -> Unit,
+) {
+    if (bookList.isEmpty()) {
+        CurrentlyReadingEmptyItem(
+            itemWidth = LocalConfiguration.current.screenWidthDp.dp - 36.dp
+        )
+    }
+    else {
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            @OptIn(ExperimentalFoundationApi::class)
+            HorizontalPager(
+                state = pagerState,
+                contentPadding = PaddingValues(16.dp),
+                pageSpacing = 4.dp,
+                modifier = Modifier.fillMaxWidth()
+            ) { pageIndex ->
+                CurrentlyReadingListItem(
+                    book = bookList[pageIndex],
+                    bookThumbnail = getBookThumbnail(bookList[pageIndex].id),
+                    itemWidth = LocalConfiguration.current.screenWidthDp.dp - 36.dp,
+                    onItemClicked = onBookClicked
+                )
+            }
+
+            if (bookList.isNotEmpty()) {
+                @OptIn(ExperimentalFoundationApi::class)
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .wrapContentHeight()
+                        .fillMaxWidth()
+                        .padding(top = 2.dp)
+                ) {
+                    repeat(pagerState.pageCount) { iteration ->
+                        val color =
+                            if (pagerState.currentPage == iteration) LibroPrimary else Color(
+                                0xFF303030
+                            )
+                        Box(
+                            modifier = Modifier
+                                .padding(2.dp)
+                                .clip(CircleShape)
+                                .background(color)
+                                .size(6.dp)
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CurrentlyReadingListItem(
+    book: Book,
+    bookThumbnail: Any?,
+    itemWidth: Dp,
+    onItemClicked: (Int) -> Unit,
+) {
+    val itemHeight = itemWidth * (1F / 4F)
+    val thumbnailHeight = itemHeight - 16.dp
+    val thumbnailWidth = thumbnailHeight * (1F / 1.41F)
+
+    // テキストが小さすぎるかも (Previewで横幅を小さくしたからその分テキストも小さく調整している)
+    BoxWithConstraints(
+        modifier = Modifier
+            .clickable { onItemClicked(book.id) }
+            .size(itemWidth, itemHeight)
+    ) {
+        Canvas(modifier = Modifier.matchParentSize()) {
+            drawRoundRect(
+                color = Color(0xFF303030),
+                cornerRadius = CornerRadius(12F, 12F)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
+        ) {
+            if (bookThumbnail == null) {
+                Canvas(
+                    modifier = Modifier
+                        .size(thumbnailWidth, thumbnailHeight)
+                ) {
+                    drawRect(color = LibroSecondary)
+                }
+            } else {
+                AsyncImage(
+                    model = bookThumbnail,
+                    contentDescription = null,
+                    modifier = Modifier.height(thumbnailHeight)
+                )
+            }
+
+            Spacer(Modifier.width(8.dp))
+
+            Text(
+                text = book.name,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+        }
+
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.End,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(end = 4.dp)
+        ){
+            Text(
+                text = stringResource(id = R.string.edit_reading_status),
+                fontSize = 8.sp
+            )
+            Spacer(Modifier.width(width = 2.dp))
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                modifier = Modifier
+                    .height(itemHeight/4),
+                tint = LibroPrimary,
+            )
+        }
+    }
+}
+
+@Composable
+private fun CurrentlyReadingEmptyItem(
+    itemWidth: Dp,
+) {
+    val itemHeight = itemWidth * (1F / 4F)
+
+    BoxWithConstraints(
+        modifier = Modifier
+            .size(itemWidth, itemHeight)
+    ) {
+        Canvas(modifier = Modifier.matchParentSize()) {
+            drawRoundRect(
+                color = Color(0xFF303030),
+                cornerRadius = CornerRadius(12F, 12F)
+            )
+        }
+
+        Text(
+            text = stringResource(id = R.string.no_currently_reading),
+            fontSize = 14.sp,
+            lineHeight = 16.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+}
+
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
+@Composable
+private fun ReadingListPreview1() {
+    val book = Book(
+        name = "Title",
+        readingStatus = 0,
+        isbn = "",
+        publishDate = "",
+        thumbnailName = "",
+        thumbnailUrl = "",
+        registeredAt = 0
+    )
+
+    LibroTheme {
+        @OptIn(ExperimentalFoundationApi::class)
+        CurrentlyReadingList(
+            bookList = persistentListOf(book, book, book),
+            getBookThumbnail = { null },
+            onBookClicked = {},
+            pagerState = rememberPagerState {
+                3
+            }
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
+@Composable
+private fun ReadingListPreview2() {
+    val book = Book(
+        name = "Title",
+        readingStatus = 0,
+        isbn = "",
+        publishDate = "",
+        thumbnailName = "",
+        thumbnailUrl = "",
+        registeredAt = 0
+    )
+
+    LibroTheme {
+        @OptIn(ExperimentalFoundationApi::class)
+        CurrentlyReadingList(
+            bookList = persistentListOf(),
+            getBookThumbnail = { null },
+            onBookClicked = {},
+            pagerState = rememberPagerState {
+                3
+            }
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
+@Composable
+private fun ReadingItemPreview1() {
+    val book = Book(
+        name = "Title",
+        readingStatus = 0,
+        isbn = "",
+        publishDate = "",
+        thumbnailName = "",
+        thumbnailUrl = "",
+        registeredAt = 0
+    )
+
+    LibroTheme {
+        CurrentlyReadingListItem(
+            book = book,
+            bookThumbnail = null,
+            itemWidth = 240.dp,
+            onItemClicked = {},
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
+@Composable
+private fun ReadingItemPreview2() {
+    val book = Book(
+        name = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle",
+        readingStatus = 0,
+        isbn = "",
+        publishDate = "",
+        thumbnailName = "",
+        thumbnailUrl = "",
+        registeredAt = 0
+    )
+
+    LibroTheme {
+        CurrentlyReadingListItem(
+            book = book,
+            bookThumbnail = null,
+            itemWidth = 240.dp,
+            onItemClicked = {},
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
+@Composable
+private fun ReadingEmptyItemPreview() {
+    LibroTheme {
+        CurrentlyReadingEmptyItem(itemWidth = 240.dp)
+    }
+}
