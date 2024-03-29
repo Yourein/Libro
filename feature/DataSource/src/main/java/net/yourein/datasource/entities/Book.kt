@@ -13,4 +13,5 @@ import androidx.room.PrimaryKey
     @ColumnInfo(name = "thumbnail_name") val thumbnailName: String?,
     @ColumnInfo(name = "isbn") val isbn: String?,
     @ColumnInfo(name = "registered_at") val registeredAt: Long,
+    @ColumnInfo(name = "reading_status") val readingStatus: Int,
 )
