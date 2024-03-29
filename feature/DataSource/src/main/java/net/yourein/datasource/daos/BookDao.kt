@@ -18,6 +18,9 @@ interface BookDao {
     @Query("SELECT * FROM book")
     fun getAllBook(): List<Book>
 
+    @Query("SELECT * FROM book ORDER BY registered_at DESC LIMIT 15")
+    fun getRecentAddedBooks(): List<Book>
+
     @Query("SELECT * FROM book WHERE isbn=:isbn LIMIT 1")
     fun getBookByIsbn(isbn: String): Book
 

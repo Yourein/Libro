@@ -12,4 +12,5 @@ import androidx.room.PrimaryKey
     @ColumnInfo(name = "thumbnail_url") val thumbnailUrl: String?,
     @ColumnInfo(name = "thumbnail_name") val thumbnailName: String?,
     @ColumnInfo(name = "isbn") val isbn: String?,
+    @ColumnInfo(name = "registered_at") val registeredAt: Long,
 )
