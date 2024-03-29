@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity data class Book(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "author") val author: String?,
     @ColumnInfo(name = "published_at") val publishDate: String?,
     @ColumnInfo(name = "thumbnail_url") val thumbnailUrl: String?,
     @ColumnInfo(name = "thumbnail_name") val thumbnailName: String?,
