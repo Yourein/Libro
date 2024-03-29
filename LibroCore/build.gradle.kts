@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:DataSource"))
+
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
