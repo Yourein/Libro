@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "net.yourein.library"
+    namespace = "net.yourein.librocore"
     compileSdk = 34
 
     defaultConfig {
