@@ -2,4 +2,6 @@
     <string name="home">Home</string>
     <string name="continue_reading">Continue Reading</string>
     <string name="recently_added">Recently Added</string>
+    <string name="edit_reading_status">Edit Reading Status</string>
+    <string name="no_currently_reading">Great!\nYou read all your Tsundokus</string>
 </resources>
