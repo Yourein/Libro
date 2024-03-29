@@ -8,12 +8,6 @@
       <entry key="app-production">
         <State />
       </entry>
-      <entry key="feature.Root">
-        <State />
-      </entry>
-      <entry key="libroui">
-        <State />
-      </entry>
     </value>
   </component>
 </project>
