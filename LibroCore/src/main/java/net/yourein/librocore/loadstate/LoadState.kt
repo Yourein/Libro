@@ -1,4 +1,4 @@
-package net.yourein.librocore.modelstate
+package net.yourein.librocore.loadstate
 
 sealed class LoadState<out T> {
     data class Loading<T>(val model: T?) : LoadState<T>()
