@@ -158,8 +158,8 @@ private fun CurrentlyReadingListItem(
 
             Text(
                 text = book.name,
-                fontSize = 12.sp,
-                lineHeight = 16.sp,
+                fontSize = 16.sp,
+                lineHeight = 19.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(end = 8.dp)
@@ -198,6 +198,7 @@ private fun CurrentlyReadingEmptyItem(
     BoxWithConstraints(
         modifier = Modifier
             .size(itemWidth, itemHeight)
+            .padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
             drawRoundRect(
@@ -208,8 +209,8 @@ private fun CurrentlyReadingEmptyItem(
 
         Text(
             text = stringResource(id = R.string.no_currently_reading),
-            fontSize = 14.sp,
-            lineHeight = 16.sp,
+            fontSize = 16.sp,
+            lineHeight = 19.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.align(Alignment.Center)
         )
