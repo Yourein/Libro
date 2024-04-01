@@ -63,9 +63,8 @@ fun CurrentlyReadingList(
         CurrentlyReadingEmptyItem(
             itemWidth = LocalConfiguration.current.screenWidthDp.dp - 36.dp
         )
-    }
-    else {
-        Column (
+    } else {
+        Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             @OptIn(ExperimentalFoundationApi::class)
@@ -164,13 +163,13 @@ private fun CurrentlyReadingListItem(
             )
         }
 
-        Row (
+        Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.End,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(end = 4.dp)
-        ){
+        ) {
             Text(
                 text = stringResource(id = R.string.edit_reading_status),
                 fontSize = 8.sp
@@ -180,7 +179,7 @@ private fun CurrentlyReadingListItem(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 modifier = Modifier
-                    .height(itemHeight/4),
+                    .height(itemHeight / 4),
                 tint = LibroPrimary,
             )
         }
@@ -235,7 +234,7 @@ private fun ReadingListPreview1() {
     )
 
     LibroTheme {
-        Box (modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize()) {
             @OptIn(ExperimentalFoundationApi::class)
             CurrentlyReadingList(
                 bookList = persistentListOf(book, book, book),
@@ -258,7 +257,7 @@ private fun ReadingListPreview1() {
 @Composable
 private fun ReadingListPreview2() {
     LibroTheme {
-        Box (
+        Box(
             contentAlignment = Alignment.TopCenter,
             modifier = Modifier.fillMaxSize()
         ) {
