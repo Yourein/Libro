@@ -83,28 +83,26 @@ fun CurrentlyReadingList(
                 )
             }
 
-            if (bookList.isNotEmpty()) {
-                @OptIn(ExperimentalFoundationApi::class)
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier
-                        .wrapContentHeight()
-                        .fillMaxWidth()
-                        .padding(top = 2.dp)
-                ) {
-                    repeat(pagerState.pageCount) { iteration ->
-                        val color =
-                            if (pagerState.currentPage == iteration) LibroPrimary else Color(
-                                0xFF303030
-                            )
-                        Box(
-                            modifier = Modifier
-                                .padding(2.dp)
-                                .clip(CircleShape)
-                                .background(color)
-                                .size(6.dp)
+            @OptIn(ExperimentalFoundationApi::class)
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .wrapContentHeight()
+                    .fillMaxWidth()
+                    .padding(top = 2.dp)
+            ) {
+                repeat(pagerState.pageCount) { iteration ->
+                    val color =
+                        if (pagerState.currentPage == iteration) LibroPrimary else Color(
+                            0xFF303030
                         )
-                    }
+                    Box(
+                        modifier = Modifier
+                            .padding(2.dp)
+                            .clip(CircleShape)
+                            .background(color)
+                            .size(6.dp)
+                    )
                 }
             }
         }
