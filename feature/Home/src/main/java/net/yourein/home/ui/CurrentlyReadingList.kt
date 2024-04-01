@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,6 +37,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -217,7 +219,9 @@ private fun CurrentlyReadingEmptyItem(
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF000000
+    backgroundColor = 0xFF000000,
+    showSystemUi = true,
+    device = Devices.PIXEL_7A
 )
 @Composable
 private fun ReadingListPreview1() {
@@ -232,44 +236,43 @@ private fun ReadingListPreview1() {
     )
 
     LibroTheme {
-        @OptIn(ExperimentalFoundationApi::class)
-        CurrentlyReadingList(
-            bookList = persistentListOf(book, book, book),
-            getBookThumbnail = { null },
-            onBookClicked = {},
-            pagerState = rememberPagerState {
-                3
-            }
-        )
+        Box (modifier = Modifier.fillMaxSize()) {
+            @OptIn(ExperimentalFoundationApi::class)
+            CurrentlyReadingList(
+                bookList = persistentListOf(book, book, book),
+                getBookThumbnail = { null },
+                onBookClicked = {},
+                pagerState = rememberPagerState {
+                    3
+                }
+            )
+        }
     }
 }
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF000000
+    backgroundColor = 0xFF000000,
+    showSystemUi = true,
+    device = Devices.PIXEL_7A
 )
 @Composable
 private fun ReadingListPreview2() {
-    val book = Book(
-        name = "Title",
-        readingStatus = 0,
-        isbn = "",
-        publishDate = "",
-        thumbnailName = "",
-        thumbnailUrl = "",
-        registeredAt = 0
-    )
-
     LibroTheme {
-        @OptIn(ExperimentalFoundationApi::class)
-        CurrentlyReadingList(
-            bookList = persistentListOf(),
-            getBookThumbnail = { null },
-            onBookClicked = {},
-            pagerState = rememberPagerState {
-                3
-            }
-        )
+        Box (
+            contentAlignment = Alignment.TopCenter,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            @OptIn(ExperimentalFoundationApi::class)
+            CurrentlyReadingList(
+                bookList = persistentListOf(),
+                getBookThumbnail = { null },
+                onBookClicked = {},
+                pagerState = rememberPagerState {
+                    3
+                }
+            )
+        }
     }
 }
 
@@ -293,7 +296,7 @@ private fun ReadingItemPreview1() {
         CurrentlyReadingListItem(
             book = book,
             bookThumbnail = null,
-            itemWidth = 240.dp,
+            itemWidth = 360.dp,
             onItemClicked = {},
         )
     }
@@ -306,7 +309,7 @@ private fun ReadingItemPreview1() {
 @Composable
 private fun ReadingItemPreview2() {
     val book = Book(
-        name = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle",
+        name = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle",
         readingStatus = 0,
         isbn = "",
         publishDate = "",
@@ -319,7 +322,7 @@ private fun ReadingItemPreview2() {
         CurrentlyReadingListItem(
             book = book,
             bookThumbnail = null,
-            itemWidth = 240.dp,
+            itemWidth = 360.dp,
             onItemClicked = {},
         )
     }
@@ -332,6 +335,6 @@ private fun ReadingItemPreview2() {
 @Composable
 private fun ReadingEmptyItemPreview() {
     LibroTheme {
-        CurrentlyReadingEmptyItem(itemWidth = 240.dp)
+        CurrentlyReadingEmptyItem(itemWidth = 360.dp)
     }
 }
