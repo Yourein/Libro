@@ -7,11 +7,11 @@ import net.yourein.datasource.entities.Series
 import net.yourein.datasource.entities.Tag
 
 interface BookRepository {
-    fun getAllBooks(): List<Book>
-    fun getBookByIsbn(isbn: String): Book
-    fun getBookByTag(tag: Tag): List<Book>
-    fun getBookBySeries(series: Series): List<Book>
-    fun getBookByAuthor(author: Author): List<Book>
-    fun getBookthumbnail(book: Book): Painter
-    fun getCurrentlyReadingBooks(): List<Book>
+    suspend fun getAllBooks(): List<Book>
+    suspend fun getBookByIsbn(isbn: String): Book
+    suspend fun getBookByTag(tag: Tag): List<Book>
+    suspend fun getBookBySeries(series: Series): List<Book>
+    suspend fun getBookByAuthor(author: Author): List<Book>
+    suspend fun getBookthumbnail(book: Book): Painter
+    suspend fun getCurrentlyReadingBooks(): List<Book>
 }
