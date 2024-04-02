@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.com.google.dagger.hilt)
 }
 
 android {
@@ -56,6 +58,9 @@ dependencies {
     implementation(project(":feature:Search"))
     implementation(project(":feature:Add"))
     implementation(project(":feature:Root"))
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)

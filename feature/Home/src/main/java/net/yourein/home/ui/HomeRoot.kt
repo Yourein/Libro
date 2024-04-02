@@ -16,11 +16,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.yourein.feature.home.R
+import net.yourein.home.HomeViewModel
 import net.yourein.librocore.theme.LibroTheme
 
 @Composable
-fun HomeRoot() {
+fun HomeRoot(
+    homeViewModel: HomeViewModel = viewModel()
+) {
+
+
     HomeRoot(
         scrollableState = rememberScrollState(),
         onBooksClicked = { /*TODO*/ },
