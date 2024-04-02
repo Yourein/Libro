@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import net.yourein.libro.ui.theme.LibroTheme
+import net.yourein.librocore.theme.LibroTheme
 import net.yourein.root.MainRoot
 
 @AndroidEntryPoint
