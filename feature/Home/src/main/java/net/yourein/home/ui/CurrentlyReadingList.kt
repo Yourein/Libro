@@ -56,7 +56,7 @@ fun CurrentlyReadingList(
     bookList: ImmutableList<Book>,
     @OptIn(ExperimentalFoundationApi::class)
     pagerState: PagerState,
-    getBookThumbnail: (Int) -> Painter?,
+    getBookThumbnail: (Int) -> Any?,
     onBookClicked: (Int) -> Unit,
 ) {
     if (bookList.isEmpty()) {
