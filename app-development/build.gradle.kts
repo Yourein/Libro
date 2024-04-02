@@ -51,16 +51,21 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
     implementation(project(":feature:Add"))
+    implementation(project(":feature:DataSource"))
     implementation(project(":feature:Root"))
     implementation(project(":LibroCore"))
 
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
 
     implementation(libs.compose.navigation)

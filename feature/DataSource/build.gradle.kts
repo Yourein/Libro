@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.com.google.dagger.hilt)
 }
 
 android {
@@ -38,9 +40,17 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
+
+    implementation(libs.bundles.hilt)
+    kapt(libs.hilt.compiler)
+
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     annotationProcessor(libs.room.anotation)

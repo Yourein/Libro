@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.com.google.dagger.hilt)
 }
 
 android {
@@ -37,12 +39,19 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
     implementation(project(":feature:Add"))
+
+    implementation(libs.bundles.hilt)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.compose.navigation)
     implementation(libs.compose.material)
