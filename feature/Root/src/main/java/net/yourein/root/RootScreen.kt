@@ -1,6 +1,5 @@
 package net.yourein.root
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -33,7 +32,6 @@ sealed class Screen(val route: String, val FilledIcon: ImageVector) {
     object Library: Screen("Add", Icons.Filled.Add)
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainRoot(
     navController: NavHostController
