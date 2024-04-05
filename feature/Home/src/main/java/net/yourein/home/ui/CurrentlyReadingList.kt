@@ -120,7 +120,6 @@ private fun CurrentlyReadingListItem(
     val thumbnailHeight = itemHeight - 16.dp
     val thumbnailWidth = thumbnailHeight * (1F / 1.41F)
 
-    // テキストが小さすぎるかも (Previewで横幅を小さくしたからその分テキストも小さく調整している)
     BoxWithConstraints(
         modifier = Modifier
             .clickable { onItemClicked(book.id) }
@@ -160,8 +159,8 @@ private fun CurrentlyReadingListItem(
 
             Text(
                 text = book.name,
-                fontSize = 16.sp,
-                lineHeight = 19.sp,
+                fontSize = 18.sp,
+                lineHeight = 21.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(end = 8.dp)
@@ -177,9 +176,8 @@ private fun CurrentlyReadingListItem(
         ) {
             Text(
                 text = stringResource(id = R.string.edit_reading_status),
-                fontSize = 8.sp
+                fontSize = 11.sp
             )
-            Spacer(Modifier.width(width = 2.dp))
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
