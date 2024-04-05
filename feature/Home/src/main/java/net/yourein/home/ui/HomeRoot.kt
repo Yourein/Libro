@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +38,9 @@ fun HomeRoot(
         onSeriesClicked = { /*TODO*/ },
         onAuthorsClicked = { /*TODO*/ },
         onTagsClicked = { /*TODO*/ },
+        getBookThumbnail = {
+            homeViewModel.getBookThumbnail(book = it)
+        },
     )
 }
 
@@ -48,6 +52,7 @@ fun HomeRoot(
     onSeriesClicked: () -> Unit,
     onAuthorsClicked: () -> Unit,
     onTagsClicked: () -> Unit,
+    getBookThumbnail: @Composable (Book) -> Painter?,
 ) {
     Column(
         modifier = Modifier
@@ -83,7 +88,7 @@ fun HomeRoot(
             pagerState = rememberPagerState {
                 currentlyReadingBooks.size
             },
-            getBookThumbnail = { null },
+            getBookThumbnail = getBookThumbnail,
             onBookClicked = {},
         )
 
@@ -110,6 +115,7 @@ private fun HomeRootPreview() {
             onSeriesClicked = { /*TODO*/ },
             onAuthorsClicked = { /*TODO*/ },
             onTagsClicked = { /*TODO*/ },
+            getBookThumbnail = { null },
         )
     }
 }

@@ -1,21 +1,18 @@
 package net.yourein.libro.repositories
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ViewModelComponent
 import kotlinx.coroutines.delay
 import net.yourein.datasource.entities.Author
 import net.yourein.datasource.entities.Book
 import net.yourein.datasource.entities.Series
 import net.yourein.datasource.entities.Tag
-import net.yourein.libro.LibroApplication
-import net.yourein.libro.MainActivity
 import net.yourein.librocore.repositories.BookRepository
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class ProdBookRepository @Inject constructor(): BookRepository {
     override suspend fun getAllBooks(): List<Book> {
@@ -50,7 +47,8 @@ class ProdBookRepository @Inject constructor(): BookRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getBookthumbnail(book: Book): Painter {
+    @Composable
+    override fun getBookThumbnail(book: Book): Painter? {
         TODO("Not yet implemented")
     }
 

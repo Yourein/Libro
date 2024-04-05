@@ -1,8 +1,10 @@
 package net.yourein.home
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,5 +32,10 @@ class HomeViewModel @Inject constructor(
                 bookRepository.getCurrentlyReadingBooks()
                     .toImmutableList()
         }
+    }
+
+    @Composable
+    fun getBookThumbnail(book: Book): Painter? {
+        return bookRepository.getBookThumbnail(book = book)
     }
 }

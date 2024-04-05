@@ -1,22 +1,20 @@
 package net.yourein.libro.repositories
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.delay
 import net.yourein.datasource.entities.Book
 import net.yourein.datasource.entities.Tag
 import net.yourein.datasource.entities.Series
 import net.yourein.datasource.entities.Author
-import net.yourein.libro.LibroApplication
-import net.yourein.libro.MainActivity
 import net.yourein.librocore.repositories.BookRepository
+import net.yourein.libro.R
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class DevBookRepository @Inject constructor(): BookRepository {
     override suspend fun getAllBooks(): List<Book> {
@@ -36,23 +34,65 @@ class DevBookRepository @Inject constructor(): BookRepository {
     }
 
     override suspend fun getBookByIsbn(isbn: String): Book {
-        TODO("Not yet implemented")
+        return Book(
+            id = 1,
+            name = "DEV: Sample Book",
+            registeredAt = 0,
+            readingStatus = 0,
+            isbn = isbn,
+            publishDate = null,
+            thumbnailName = null,
+            thumbnailUrl = null,
+        )
     }
 
     override suspend fun getBookByTag(tag: Tag): List<Book> {
-        TODO("Not yet implemented")
+        return (1..5).map {
+            Book(
+                id = it,
+                name = "DEV: Sample Book Collected by Tag",
+                registeredAt = 0,
+                readingStatus = 0,
+                isbn = null,
+                publishDate = null,
+                thumbnailName = null,
+                thumbnailUrl = null,
+            )
+        }
     }
 
     override suspend fun getBookBySeries(series: Series): List<Book> {
-        TODO("Not yet implemented")
+        return (1..5).map {
+            Book(
+                id = it,
+                name = "DEV: Sample Book Collected by Series",
+                registeredAt = 0,
+                readingStatus = 0,
+                isbn = null,
+                publishDate = null,
+                thumbnailName = null,
+                thumbnailUrl = null,
+            )
+        }
     }
 
     override suspend fun getBookByAuthor(author: Author): List<Book> {
-        TODO("Not yet implemented")
+        return (1..5).map {
+            Book(
+                id = it,
+                name = "DEV: Sample Book Collected by Author",
+                registeredAt = 0,
+                readingStatus = 0,
+                isbn = null,
+                publishDate = null,
+                thumbnailName = null,
+                thumbnailUrl = null,
+            )
+        }
     }
-
-    override suspend fun getBookthumbnail(book: Book): Painter {
-        TODO("Not yet implemented")
+    @Composable
+    override fun getBookThumbnail(book: Book): Painter {
+        return painterResource(id = R.drawable.small_sample_thumbnail_a6)
     }
 
     override suspend fun getCurrentlyReadingBooks(): List<Book> {

@@ -2,6 +2,7 @@ package net.yourein.home.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -56,7 +57,7 @@ fun CurrentlyReadingList(
     bookList: ImmutableList<Book>,
     @OptIn(ExperimentalFoundationApi::class)
     pagerState: PagerState,
-    getBookThumbnail: (Int) -> Any?,
+    getBookThumbnail: @Composable (Book) -> Painter?,
     onBookClicked: (Int) -> Unit,
 ) {
     if (bookList.isEmpty()) {
@@ -76,7 +77,7 @@ fun CurrentlyReadingList(
             ) { pageIndex ->
                 CurrentlyReadingListItem(
                     book = bookList[pageIndex],
-                    bookThumbnail = getBookThumbnail(bookList[pageIndex].id),
+                    bookThumbnail = getBookThumbnail(bookList[pageIndex]),
                     itemWidth = LocalConfiguration.current.screenWidthDp.dp - 36.dp,
                     onItemClicked = onBookClicked
                 )
@@ -111,7 +112,7 @@ fun CurrentlyReadingList(
 @Composable
 private fun CurrentlyReadingListItem(
     book: Book,
-    bookThumbnail: Any?,
+    bookThumbnail: Painter?,
     itemWidth: Dp,
     onItemClicked: (Int) -> Unit,
 ) {
@@ -144,10 +145,14 @@ private fun CurrentlyReadingListItem(
                     drawRect(color = LibroSecondary)
                 }
             } else {
-                AsyncImage(
-                    model = bookThumbnail,
-                    contentDescription = null,
-                    modifier = Modifier.height(thumbnailHeight)
+//                AsyncImage(
+//                    model = bookThumbnail,
+//                    contentDescription = null,
+//                    modifier = Modifier.height(thumbnailHeight)
+//                )
+                Image(
+                    painter = bookThumbnail,
+                    contentDescription = null
                 )
             }
 
