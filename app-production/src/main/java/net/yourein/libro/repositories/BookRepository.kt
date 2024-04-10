@@ -67,6 +67,22 @@ class ProdBookRepository @Inject constructor(): BookRepository {
             )
         }
     }
+
+    override suspend fun getRecentlyAddedBooks(): List<Book> {
+        delay(100)
+        return (1..11).map {
+            Book(
+                id = it,
+                name = "PROD: Recently Added Book Title ${it}",
+                registeredAt = 0,
+                readingStatus = 0,
+                isbn = null,
+                publishDate = null,
+                thumbnailUrl = null,
+                thumbnailName = null
+            )
+        }
+    }
 }
 
 @Module

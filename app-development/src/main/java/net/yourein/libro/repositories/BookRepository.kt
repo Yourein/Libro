@@ -8,12 +8,12 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import kotlinx.coroutines.delay
-import net.yourein.datasource.entities.Book
-import net.yourein.datasource.entities.Tag
-import net.yourein.datasource.entities.Series
 import net.yourein.datasource.entities.Author
-import net.yourein.librocore.repositories.BookRepository
+import net.yourein.datasource.entities.Book
+import net.yourein.datasource.entities.Series
+import net.yourein.datasource.entities.Tag
 import net.yourein.libro.R
+import net.yourein.librocore.repositories.BookRepository
 import javax.inject.Inject
 
 class DevBookRepository @Inject constructor(): BookRepository {
@@ -101,6 +101,22 @@ class DevBookRepository @Inject constructor(): BookRepository {
             Book(
                 id = it,
                 name = "Currently Reading Book Title ${it}",
+                registeredAt = 0,
+                readingStatus = 0,
+                isbn = null,
+                publishDate = null,
+                thumbnailUrl = null,
+                thumbnailName = null
+            )
+        }
+    }
+
+    override suspend fun getRecentlyAddedBooks(): List<Book> {
+        delay(100)
+        return (1..11).map {
+            Book(
+                id = it,
+                name = "Recently Added Book Title ${it}",
                 registeredAt = 0,
                 readingStatus = 0,
                 isbn = null,

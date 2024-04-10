@@ -15,4 +15,6 @@ interface BookRepository {
     suspend fun getBookByAuthor(author: Author): List<Book>
     @Composable fun getBookThumbnail(book: Book): Painter?
     suspend fun getCurrentlyReadingBooks(): List<Book>
+
+    suspend fun getRecentlyAddedBooks(): List<Book>
 }
