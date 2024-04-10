@@ -111,10 +111,10 @@ private fun HomeRootPreview() {
         HomeRoot(
             scrollableState = rememberScrollState(),
             currentlyReadingBooks = persistentListOf(),
-            onBooksClicked = { /*TODO*/ },
-            onSeriesClicked = { /*TODO*/ },
-            onAuthorsClicked = { /*TODO*/ },
-            onTagsClicked = { /*TODO*/ },
+            onBooksClicked = {  },
+            onSeriesClicked = {  },
+            onAuthorsClicked = {  },
+            onTagsClicked = {  },
             getBookThumbnail = { null },
         )
     }
