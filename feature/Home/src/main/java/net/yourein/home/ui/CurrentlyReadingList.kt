@@ -43,7 +43,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import net.yourein.datasource.entities.Book
@@ -142,11 +141,6 @@ private fun CurrentlyReadingListItem(
                         .size(thumbnailWidth, thumbnailHeight)
                 )
             } else {
-//                AsyncImage(
-//                    model = bookThumbnail,
-//                    contentDescription = null,
-//                    modifier = Modifier.height(thumbnailHeight)
-//                )
                 Image(
                     painter = bookThumbnail,
                     contentDescription = null
