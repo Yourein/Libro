@@ -49,8 +49,8 @@ import kotlinx.collections.immutable.persistentListOf
 import net.yourein.datasource.entities.Book
 import net.yourein.feature.home.R
 import net.yourein.librocore.theme.LibroPrimary
-import net.yourein.librocore.theme.LibroSecondary
 import net.yourein.librocore.theme.LibroTheme
+import net.yourein.librocore.uiparts.DummyBookThumbnail
 
 @Composable
 fun CurrentlyReadingList(
@@ -137,12 +137,10 @@ private fun CurrentlyReadingListItem(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
         ) {
             if (bookThumbnail == null) {
-                Canvas(
+                DummyBookThumbnail(
                     modifier = Modifier
                         .size(thumbnailWidth, thumbnailHeight)
-                ) {
-                    drawRect(color = LibroSecondary)
-                }
+                )
             } else {
 //                AsyncImage(
 //                    model = bookThumbnail,
