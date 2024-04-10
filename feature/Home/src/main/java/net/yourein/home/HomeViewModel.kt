@@ -21,15 +21,28 @@ class HomeViewModel @Inject constructor(
     private val bookRepository: BookRepository,
 ) : ViewModel() {
     var currentlyReadingBooks: ImmutableList<Book> by mutableStateOf(persistentListOf())
+        private set
+
+    var recentlyAddedBooks: ImmutableList<Book> by mutableStateOf(persistentListOf())
+        private set
 
     init {
         updateCurrentlyReadingBooks()
+        updateRecentlyAddedBooks()
     }
 
     fun updateCurrentlyReadingBooks() {
         viewModelScope.launch {
             currentlyReadingBooks =
                 bookRepository.getCurrentlyReadingBooks()
+                    .toImmutableList()
+        }
+    }
+
+    private fun updateRecentlyAddedBooks() {
+        viewModelScope.launch {
+            recentlyAddedBooks =
+                bookRepository.getRecentlyAddedBooks()
                     .toImmutableList()
         }
     }

@@ -34,6 +34,7 @@ fun HomeRoot(
     HomeRoot(
         scrollableState = rememberScrollState(),
         currentlyReadingBooks = homeViewModel.currentlyReadingBooks,
+        recentlyAddedBooks = homeViewModel.recentlyAddedBooks,
         onBooksClicked = { /*TODO*/ },
         onSeriesClicked = { /*TODO*/ },
         onAuthorsClicked = { /*TODO*/ },
@@ -41,6 +42,7 @@ fun HomeRoot(
         getBookThumbnail = {
             homeViewModel.getBookThumbnail(book = it)
         },
+        onRecentlyAddedBookThumbnailClicked = {},
     )
 }
 
@@ -48,11 +50,13 @@ fun HomeRoot(
 fun HomeRoot(
     scrollableState: ScrollableState,
     currentlyReadingBooks: ImmutableList<Book>,
+    recentlyAddedBooks: ImmutableList<Book>,
     onBooksClicked: () -> Unit,
     onSeriesClicked: () -> Unit,
     onAuthorsClicked: () -> Unit,
     onTagsClicked: () -> Unit,
     getBookThumbnail: @Composable (Book) -> Painter?,
+    onRecentlyAddedBookThumbnailClicked: (Int) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -97,6 +101,12 @@ fun HomeRoot(
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp
         )
+
+        RecentlyAddedList(
+            books = recentlyAddedBooks,
+            getBookThumbnail = getBookThumbnail,
+            onBookThumbnailClicked = onRecentlyAddedBookThumbnailClicked,
+        )
     }
 }
 
@@ -111,11 +121,13 @@ private fun HomeRootPreview() {
         HomeRoot(
             scrollableState = rememberScrollState(),
             currentlyReadingBooks = persistentListOf(),
+            recentlyAddedBooks = persistentListOf(),
             onBooksClicked = {  },
             onSeriesClicked = {  },
             onAuthorsClicked = {  },
             onTagsClicked = {  },
             getBookThumbnail = { null },
+            onRecentlyAddedBookThumbnailClicked = {},
         )
     }
 }
