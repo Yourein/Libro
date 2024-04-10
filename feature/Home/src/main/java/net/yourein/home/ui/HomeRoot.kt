@@ -4,7 +4,9 @@ import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -92,10 +94,18 @@ fun HomeRoot(
             onBookClicked = {},
         )
 
+        Spacer(
+            modifier = Modifier.height(8.dp)
+        )
+
         Text(
             text = stringResource(id = R.string.recently_added),
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp
+        )
+
+        Spacer(
+            modifier = Modifier.height(8.dp)
         )
 
         RecentlyAddedList(
