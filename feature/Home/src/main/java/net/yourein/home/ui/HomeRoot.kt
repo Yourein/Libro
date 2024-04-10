@@ -2,14 +2,13 @@ package net.yourein.home.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.ScrollableState
-import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +31,7 @@ fun HomeRoot(
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     HomeRoot(
-        scrollableState = rememberScrollState(),
+        scrollState = rememberScrollState(),
         currentlyReadingBooks = homeViewModel.currentlyReadingBooks,
         recentlyAddedBooks = homeViewModel.recentlyAddedBooks,
         onBooksClicked = { /*TODO*/ },
@@ -48,7 +47,7 @@ fun HomeRoot(
 
 @Composable
 fun HomeRoot(
-    scrollableState: ScrollableState,
+    scrollState: ScrollState,
     currentlyReadingBooks: ImmutableList<Book>,
     recentlyAddedBooks: ImmutableList<Book>,
     onBooksClicked: () -> Unit,
@@ -61,10 +60,7 @@ fun HomeRoot(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .scrollable(
-                state = scrollableState,
-                orientation = Orientation.Vertical
-            )
+            .verticalScroll(state = scrollState)
             .padding(18.dp)
     ) {
         Text(
@@ -119,7 +115,7 @@ fun HomeRoot(
 private fun HomeRootPreview() {
     LibroTheme {
         HomeRoot(
-            scrollableState = rememberScrollState(),
+            scrollState = rememberScrollState(),
             currentlyReadingBooks = persistentListOf(),
             recentlyAddedBooks = persistentListOf(),
             onBooksClicked = {  },
