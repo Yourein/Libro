@@ -1,5 +1,6 @@
 package net.yourein.home.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -108,6 +109,7 @@ fun CurrentlyReadingList(
     }
 }
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 private fun CurrentlyReadingListItem(
     book: Book,
@@ -181,6 +183,7 @@ private fun CurrentlyReadingListItem(
     }
 }
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 private fun CurrentlyReadingEmptyItem(
     itemWidth: Dp,
