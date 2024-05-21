@@ -26,20 +26,23 @@ import kotlinx.collections.immutable.persistentListOf
 import net.yourein.datasource.entities.Book
 import net.yourein.feature.home.R
 import net.yourein.home.HomeViewModel
+import net.yourein.librocore.LocalNavigationController
 import net.yourein.librocore.theme.LibroTheme
 
 @Composable
 fun HomeRoot(
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
+    val navController = LocalNavigationController.current
+
     HomeRoot(
         scrollState = rememberScrollState(),
         currentlyReadingBooks = homeViewModel.currentlyReadingBooks,
         recentlyAddedBooks = homeViewModel.recentlyAddedBooks,
-        onBooksClicked = { /*TODO*/ },
-        onSeriesClicked = { /*TODO*/ },
-        onAuthorsClicked = { /*TODO*/ },
-        onTagsClicked = { /*TODO*/ },
+        onBooksClicked = { navController.navigateToBooks(null) },
+        onSeriesClicked = { navController.navigateToSeries(null) },
+        onAuthorsClicked = { navController.navigateToAuthors(null) },
+        onTagsClicked = { navController.navigateToTags(null) },
         getBookThumbnail = {
             homeViewModel.getBookThumbnail(book = it)
         },

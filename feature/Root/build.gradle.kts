@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":feature:Home"))
     implementation(project(":feature:Search"))
     implementation(project(":feature:Add"))
+    implementation(project(":LibroCore"))
 
     implementation(libs.bundles.hilt)
     kapt(libs.hilt.compiler)
