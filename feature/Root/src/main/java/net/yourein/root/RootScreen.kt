@@ -1,6 +1,5 @@
 package net.yourein.root
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -50,7 +49,6 @@ fun MainRoot(
                             }
                             launchSingleTop = true
                         })
-                        Log.i("i", "Current Route: ${currentDestination.toString()}")
                     },
                     icon = { NavigationIcon(Screen.HomeGroup) }
                 )
