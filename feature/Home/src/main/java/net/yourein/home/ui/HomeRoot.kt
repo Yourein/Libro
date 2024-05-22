@@ -66,7 +66,7 @@ fun HomeRoot(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(state = scrollState)
-            .padding(18.dp)
+            .padding(vertical = 20.dp, horizontal = 8.dp)
     ) {
         Text(
             text = stringResource(id = R.string.home),
