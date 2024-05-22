@@ -44,7 +44,12 @@ fun MainRoot(
                 NavigationBarItem(
                     selected = currentDestination?.hierarchy?.any { it.route == Screen.HomeGroup.route } == true,
                     onClick = {
-                        navigator.navigateToHome(null)
+                        navigator.navigateToHome(navOptions {
+                            popUpTo(Screen.HomeGroup.route) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                        })
                         Log.i("i", "Current Route: ${currentDestination.toString()}")
                     },
                     icon = { NavigationIcon(Screen.HomeGroup) }
