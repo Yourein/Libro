@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 class DevBookRepository @Inject constructor(): BookRepository {
     override suspend fun getAllBooks(): List<Book> {
-        return (1..10).map {
+        return (1..100).map {
             Book(
                 id = it,
                 name = "Book Title ${it}",
