@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 class DevBookRepository @Inject constructor(): BookRepository {
     override suspend fun getAllBooks(): List<Book> {
-        delay(5000)
         return (1..10).map {
             Book(
                 id = it,
