@@ -1,5 +1,6 @@
 package net.yourein.home.ui.lists
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,17 +23,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
 import kotlinx.collections.immutable.ImmutableList
 import net.yourein.datasource.entities.Book
 import net.yourein.home.BooksScreenViewModel
 import net.yourein.librocore.LocalNavigationController
+import net.yourein.librocore.uiparts.DummyBookThumbnail
 
 @Composable
 fun BooksScreen(
@@ -60,7 +60,7 @@ private fun BooksScreen(
     lazyColumnState: LazyListState,
     onClickedBackArrow: () -> Unit,
     onBookClicked: (Int) -> Unit,
-    getBookthumbnail: @Composable (Book) -> Any?
+    getBookthumbnail: @Composable (Book) -> Painter?
 ) {
     Scaffold(
         topBar = {
@@ -94,7 +94,7 @@ private fun BooksScreen(
                 BookItem(
                     book = book,
                     onBookClicked = onBookClicked,
-                    imageModel = getBookthumbnail(book),
+                    bookThumbnail = getBookthumbnail(book),
                 )
 
                 if (book != bookList.last()) {
@@ -113,7 +113,7 @@ private fun BooksScreen(
 private fun BookItem(
     book: Book,
     onBookClicked: (Int) -> Unit,
-    imageModel: Any?,
+    bookThumbnail: Painter?,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -124,15 +124,21 @@ private fun BookItem(
             }
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        AsyncImage(
-            model = imageModel,
-            contentDescription = null,
-            placeholder = ColorPainter(Color.White),
-            error = ColorPainter(Color.White),
-            modifier = Modifier
-                .height(90.dp)
-                .aspectRatio(1 / 1.41F)
-        )
+        if (bookThumbnail == null) {
+            DummyBookThumbnail(
+                modifier = Modifier
+                    .height(90.dp)
+                    .aspectRatio(1/1.41F)
+            )
+        } else {
+            Image(
+                painter = bookThumbnail,
+                contentDescription = null,
+                modifier = Modifier
+                    .height(90.dp)
+                    .aspectRatio(1/1.41F)
+            )
+        }
 
         Spacer(modifier = Modifier.width(8.dp))
 
