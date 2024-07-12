@@ -33,7 +33,7 @@ fun HomeNavigationItem(
                 enabled = true,
                 onClick = onClick
             )
-            .padding(horizontal = 9.dp)
+            .padding(horizontal = 16.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

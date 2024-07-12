@@ -6,6 +6,7 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
@@ -13,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
@@ -63,15 +65,19 @@ fun HomeRoot(
     onRecentlyAddedBookThumbnailClicked: (Int) -> Unit,
 ) {
     Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(state = scrollState)
-            .padding(vertical = 20.dp, horizontal = 8.dp)
+            .padding(vertical = 20.dp)
     ) {
         Text(
             text = stringResource(id = R.string.home),
             fontWeight = FontWeight.Bold,
-            fontSize = 32.sp
+            fontSize = 32.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp)
         )
 
         HomeNavigationStack(
@@ -81,10 +87,15 @@ fun HomeRoot(
             onTagsClicked = onTagsClicked
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
         Text(
             text = stringResource(id = R.string.continue_reading),
             fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
+            fontSize = 22.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp)
         )
 
         @OptIn(ExperimentalFoundationApi::class)
@@ -104,7 +115,10 @@ fun HomeRoot(
         Text(
             text = stringResource(id = R.string.recently_added),
             fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
+            fontSize = 22.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp)
         )
 
         Spacer(

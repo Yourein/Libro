@@ -22,8 +22,8 @@ fun HomeNavigationStack(
         color = LibroDivider,
         thickness = 1.dp,
         modifier = Modifier.padding(
-            top = 16.dp,
-            bottom = 6.dp
+            vertical = 6.dp,
+            horizontal = 16.dp,
         )
     )
     HomeNavigationItem(
@@ -34,7 +34,10 @@ fun HomeNavigationStack(
     HorizontalDivider(
         color = LibroDivider,
         thickness = 1.dp,
-        modifier = Modifier.padding(vertical = 6.dp)
+        modifier = Modifier.padding(
+            vertical = 6.dp,
+            horizontal = 16.dp
+        )
     )
     HomeNavigationItem(
         title = "Series",
@@ -44,7 +47,10 @@ fun HomeNavigationStack(
     HorizontalDivider(
         color = LibroDivider,
         thickness = 1.dp,
-        modifier = Modifier.padding(vertical = 6.dp)
+        modifier = Modifier.padding(
+            vertical = 6.dp,
+            horizontal = 16.dp
+        )
     )
     HomeNavigationItem(
         title = "Authors",
@@ -54,7 +60,10 @@ fun HomeNavigationStack(
     HorizontalDivider(
         color = LibroDivider,
         thickness = 1.dp,
-        modifier = Modifier.padding(vertical = 6.dp)
+        modifier = Modifier.padding(
+            vertical = 6.dp,
+            horizontal = 16.dp
+        )
     )
     HomeNavigationItem(
         title = "Tags",
@@ -65,8 +74,8 @@ fun HomeNavigationStack(
         color = LibroDivider,
         thickness = 1.dp,
         modifier = Modifier.padding(
-            top = 6.dp,
-            bottom = 16.dp
+            vertical = 6.dp,
+            horizontal = 16.dp
         )
     )
 }
