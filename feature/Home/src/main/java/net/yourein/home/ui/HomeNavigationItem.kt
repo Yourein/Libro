@@ -1,7 +1,6 @@
 package net.yourein.home.ui
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,35 +25,32 @@ fun HomeNavigationItem(
     icon: ImageVector,
     onClick: () -> Unit,
 ) {
-    BoxWithConstraints(
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(
-                enabled = true,
-                onClick = onClick
-            )
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp)
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = LibroPrimary,
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Text(
+            text = title,
             modifier = Modifier
-                .align(Alignment.CenterStart)
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = LibroPrimary,
-            )
-            Spacer(modifier = Modifier.width(6.dp))
-            Text(
-                text = title,
-            )
-        }
+                .weight(1f)
+        )
+
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             contentDescription = null,
-            modifier = Modifier.align(Alignment.CenterEnd),
             tint = LibroPrimary,
+            modifier = Modifier
         )
     }
 }
