@@ -1,5 +1,6 @@
 package net.yourein.home
 
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,6 +23,7 @@ class BooksScreenViewModel @Inject constructor(
 ) : ViewModel() {
     var allBooksList: ImmutableList<Book> by mutableStateOf(persistentListOf())
         private set
+    val lazyListState = LazyListState()
 
     init {
         updateBookList()
