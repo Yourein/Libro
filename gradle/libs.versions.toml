@@ -19,6 +19,7 @@ coil = "2.6.0"
 hilt = "2.51.1"
 androidx-hilt = "1.2.0"
 lifecycle-viewmodel-compose = "2.7.0"
+datastore="1.1.1"
 
 [libraries]
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
@@ -27,6 +28,7 @@ compose-icon = { group = "androidx.compose.material", name = "material-icons-cor
 room-database = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-anotation = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt" }
