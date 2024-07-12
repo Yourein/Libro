@@ -45,11 +45,11 @@ fun RecentlyAddedList(
     else {
         @OptIn(ExperimentalLayoutApi::class)
         FlowRow(
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            horizontalArrangement = Arrangement.SpaceAround,
             maxItemsInEachRow = 3,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 4.dp)
+                .padding(horizontal = 16.dp)
         ) {
             val itemHeight = 140.dp
             repeat(books.size) { index ->
