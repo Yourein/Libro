@@ -22,6 +22,8 @@ private val DarkColorScheme = darkColorScheme(
     surface = LibroBackground,
     error = LibroError,
     onError = LibroError,
+    onSecondaryContainer = LibroPrimary,
+    secondaryContainer = LibroTransparent,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -33,6 +35,8 @@ private val LightColorScheme = lightColorScheme(
     surface = LibroBackground,
     error = LibroError,
     onError = LibroError,
+    onSecondaryContainer = LibroPrimary,
+    secondaryContainer = LibroTransparent,
 )
 
 @Composable
@@ -54,7 +58,7 @@ fun LibroTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
