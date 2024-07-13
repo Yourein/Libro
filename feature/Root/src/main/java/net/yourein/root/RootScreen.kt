@@ -86,7 +86,7 @@ private fun NavigationIcon(route: Screen) {
         )
         Text(
             route.route,
-            fontSize = 11.sp,
+            fontSize = 12.sp,
         )
     }
 }
