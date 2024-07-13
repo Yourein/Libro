@@ -46,7 +46,7 @@ fun RecentlyAddedList(
         @OptIn(ExperimentalLayoutApi::class)
         FlowRow(
             horizontalArrangement = Arrangement.SpaceAround,
-            maxItemsInEachRow = 3,
+            maxItemsInEachRow = 5,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
